@@ -13,10 +13,14 @@ class Image(models.Model):
     image = models.ImageField(upload_to='images/%Y/%m/%d')
     description = models.TextField(blank=True)
     created = models.DateField(auto_now_add=True)
+    total_likes = models.PositiveIntegerField(default=0)
 
     class Meta:
         ordering = ['-created']
-        indexes = [models.Index(fields=['-created'])]
+        indexes = [
+            models.Index(fields=['-created']),
+            models.Index(fields=['-total_likes']),
+        ]
 
     def save(self, *args, **kwargs):
         if not self.slug:
