@@ -37,24 +37,6 @@ def image_detail(request, id, slug):
 
 
 @login_required
-@require_POST
-def image_like(request):
-    image_id = request.POST.get('id')
-    action = request.POST.get('action')
-    if image_id and action:
-        try:
-            image = Image.objects.get(id=image_id)
-            if action == 'like':
-                image.users_like.add(request.user)
-            else:
-                image.users_like.remove(request.user)
-            return JsonResponse({'status': 'ok'})
-        except Image.DoesNotExist:
-            pass
-    return JsonResponse({'status': 'error'})
-
-
-@login_required
 def image_list(request):
     images = Image.objects.all()
     paginator = Paginator(images, 8)
@@ -102,7 +84,7 @@ def image_like(request):
                 create_action(request.user, 'likes', image)
             else:
                 image.users_like.remove(request.user)
-                return JsonResponse({'status': 'ok'})
+            return JsonResponse({'status': 'ok'})
         except Image.DoesNotExist:
             pass
     return JsonResponse({'status': 'error'})
