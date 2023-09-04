@@ -51,7 +51,7 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'socialWebsite.wsgi.application'
+WSGI_APPLICATION = 'social_website.wsgi.application'
 
 AUTH_PASSWORD_VALIDATORS = [
     {
@@ -76,7 +76,7 @@ USE_I18N = True
 
 USE_TZ = True
 
-ROOT_URLCONF = 'socialWebsite.urls'
+ROOT_URLCONF = 'social_website.urls'
 
 STATIC_URL = 'static/'
 STATIC_ROOT = BASE_DIR / 'static'

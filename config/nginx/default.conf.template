@@ -1,5 +1,5 @@
 upstream uwsgi_app {
-    server unix:/code/socialWebsite/uwsgi_app.sock;
+    server unix:/code/social_website/uwsgi_app.sock;
 }
 
 server {
